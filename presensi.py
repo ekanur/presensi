@@ -6,8 +6,9 @@ from pyhtml2pdf import converter
 daftar_bulan    = ["januari", "februari", "maret", "april", "mei", "juni", "juli", "agustus", "september", "oktober", "november", "desember"]
 bulan           = sys.argv[1] if len(sys.argv) > 1 else daftar_bulan[datetime.date.today().month-1]
 login_url       = "https://simpeg2.jogjaprov.go.id/prod/index.php/login/cek_login"
+logout_url      = "https://simpeg2.jogjaprov.go.id/prod/index.php/login/logout"
 scrap_page      = "https://simpeg2.jogjaprov.go.id/prod/index.php/lap_pres_harian/cetak/"
-format          = "format.html" 
+
 session         = requests.session()
 
 angka_bulan     = daftar_bulan.index(bulan)+1 if bulan != 'desember' else 12
@@ -52,7 +53,7 @@ def get_presensi(akun):
 
 
         ttd = create_sign(akun['nama'], akun['nip'], bulan_ttd)
-        s.get("https://simpeg2.jogjaprov.go.id/prod/index.php/login/logout")
+        s.get(logout_url)
 
         return [page_title[0], presensi[0], ttd]
 
