@@ -1,0 +1,26 @@
+	.abang{
+		color:red;
+	}
+	
+	* {
+		font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+		font-size: 11px;
+	}
+
+	.table-cetak {
+		border: 1pt solid black;
+	}
+
+	.table-cetak tr th {
+		/*text-align: left;*/
+		border: 1pt solid black;
+		background-color: #DDDDDD;
+		padding: 3px;
+		font-weight: bold;
+	}
+
+	.table-cetak tr td {
+		padding: 3px;
+		background-color: white;
+		border: 1pt solid black;
+	}
