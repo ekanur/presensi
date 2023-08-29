@@ -12,7 +12,10 @@ session         = requests.session()
 
 angka_bulan     = daftar_bulan.index(bulan)+1 if bulan != 'desember' else 12
 bulan_ttd       = daftar_bulan[angka_bulan] if angka_bulan < 12 else daftar_bulan[0]
-tahun           = datetime.date.today().year 
+tahun           = datetime.date.today().year
+
+if os.path.exists("rekap") == False : os.mkdir("rekap")
+if os.path.exists("pdf") == False : os.mkdir("pdf")
 
 def read_data(file):
     data = []
