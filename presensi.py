@@ -4,15 +4,20 @@ from bs4 import BeautifulSoup
 from pyhtml2pdf import converter
 
 daftar_bulan    = ["januari", "februari", "maret", "april", "mei", "juni", "juli", "agustus", "september", "oktober", "november", "desember"]
-bulan           = sys.argv[1] if len(sys.argv) > 1 else daftar_bulan[datetime.date.today().month-1]
+bulan           = sys.argv[1] if len(sys.argv) > 1 else daftar_bulan[datetime.date.today().month-2]
+
+if bulan not in daftar_bulan : 
+    print("Error bulan salah.") 
+    exit()
+
 login_url       = "https://simpeg2.jogjaprov.go.id/prod/index.php/login/cek_login"
 logout_url      = "https://simpeg2.jogjaprov.go.id/prod/index.php/login/logout"
 scrap_page      = "https://simpeg2.jogjaprov.go.id/prod/index.php/lap_pres_harian/cetak/"
 
 session         = requests.session()
 
-angka_bulan     = daftar_bulan.index(bulan)+1 if bulan != 'desember' else 12
-bulan_ttd       = daftar_bulan[angka_bulan] if angka_bulan < 12 else daftar_bulan[0]
+angka_bulan     = daftar_bulan.index(bulan) 
+bulan_ttd       = daftar_bulan[angka_bulan+1] if angka_bulan != 11 else daftar_bulan[0]
 tahun           = datetime.date.today().year
 
 if os.path.exists("rekap") == False : os.mkdir("rekap")
