@@ -110,10 +110,10 @@ def write_presensi() :
 
                 file.write(rekap.prettify())
 
-            converter.convert(os.path.abspath(f'rekap/{akun["nama"]}.html'), f"pdf/{akun['nama']}.pdf", print_options={"paperHeight":13, "paperWidth":8.27})
+            converter.convert(os.path.abspath(f'rekap/{akun["nama"]}.html'), f"pdf/{akun['nama']}_{daftar_bulan[angka_bulan]}.pdf", print_options={"paperHeight":13, "paperWidth":8.27})
             os.remove(f"rekap/{akun['nama']}.html")
 
-            print(f"Berhasil membuat rekap {akun['nama']}.pdf di folder pdf")
+            print(f"Berhasil membuat rekap {akun['nama']}_{daftar_bulan[angka_bulan]}.pdf di folder pdf")
         else:
             print(f"Gagal membuat rekap {akun['nama']}. Akun gagal login")
 
